@@ -81,11 +81,12 @@ ESX.RegisterServerCallback("esx-qalle-sellvehicles:buyVehicle", function(source,
 	if xPlayer.getAccount("bank")["money"] >= price or price == 0 then
 		xPlayer.removeAccountMoney("bank", price)
 
-		MySQL.Async.execute("INSERT INTO owned_vehicles (plate, owner, vehicle) VALUES (@plate, @identifier, @vehProps)",
+		MySQL.Async.execute("INSERT INTO owned_vehicles (plate, owner, vehicle, stored) VALUES (@plate, @identifier, @vehProps, @stored)",
 			{
 				["@plate"] = plate,
 				["@identifier"] = xPlayer["identifier"],
-				["@vehProps"] = json.encode(vehProps)
+				["@vehProps"] = json.encode(vehProps),
+				["@stored"] = 1
 			}
 		)
 
