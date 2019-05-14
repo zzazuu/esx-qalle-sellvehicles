@@ -1,4 +1,5 @@
 Config = {}
+Config.Locale   = 'en'
 
 Config.SellPosition = {
     ["x"] = -21.194881439209, 

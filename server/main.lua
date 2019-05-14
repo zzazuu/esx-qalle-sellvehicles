@@ -134,7 +134,7 @@ function UpdateCash(identifier, cash)
 	if xPlayer ~= nil then
 		xPlayer.addAccountMoney("bank", cash)
 
-		TriggerClientEvent("esx:showNotification", xPlayer.source, "Someone bought your vehicle and transferred $" .. cash)
+		TriggerClientEvent("esx:showNotification", xPlayer.source, _U('sold_vehicle') .. cash)
 	else
 		MySQL.Async.fetchAll('SELECT bank FROM users WHERE identifier = @identifier', { ["@identifier"] = identifier }, function(result)
 			if result[1]["bank"] ~= nil then
